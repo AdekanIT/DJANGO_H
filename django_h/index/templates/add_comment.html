@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Add comment</title>
+</head>
+<body>
+Add comment
+<form method="post">
+    {% csrf_token %}
+    {{ form.user_name }}<br>
+    {{ form.user_title }}<br>
+    {{ form.user_comment }}<br>
+    <button type="submit">Comment</button>
+    <span>{{ error }}</span>
+</form>
+<a href="/">Home page</a>
+</body>
+</html>

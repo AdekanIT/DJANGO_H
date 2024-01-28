@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+</head>
+<body>
+Add Title
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.title }}<br>
+    {{ form.text }}<br>
+    {{ form.img }}<br>
+    {{ form.category_name }}<br>
+    <button type="submit">Add Title</button>
+    <span>{{ error }}</span>
+</form>
+<a href="/">Home page</a>
+</body>
+</html>

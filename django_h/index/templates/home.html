@@ -7,7 +7,24 @@
 <body>
 <h1>Home page</h1>
 <hr>
-<a href="/states">States</a>
-<a href="/regist">Registration</a>
+<a href="/accounts/login">Log In</a>
+<a href="/accounts/logout">Log Out</a>
+<form action="search" method="POST">
+    {% csrf_token %}
+    <input type="text" name="search_state">
+    <button>Search</button>
+</form>
+<hr>
+Titles:<br>
+{% for i in states %}
+<a href="/states/{{ i.id }}">{{ i.title }}</a><br>
+{% endfor %}
+<hr>
+Category:<br>
+{% for i in category %}
+<a href="/category/{{ i.id }}">{{ i.c_name }}</a><br>
+{% endfor %}
+<hr>
+<a href="/regist-state">Add Title</a>
 </body>
 </html>
