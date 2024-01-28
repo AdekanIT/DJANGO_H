@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
-from .forms import SearchForm, CommentsForm, TitleForm
+from .forms import SearchForm, CommentsForm, TitleForm, SignUpForm
 from .models import Category, Title, Comments
+from django.contrib.auth import login
 
 
 # Create your views here.
@@ -12,6 +13,23 @@ def home(request):
                'states': states_all,
                'category': category_all}
     return render(request, 'home.html', context)
+
+
+def register(request):
+    error = ''
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('/')
+        else:
+            error = 'Invalid type'
+
+    form = SignUpForm()
+    context = {'form': form,
+               'error': error}
+    return render(request, 'registration/register.html', context)
 
 
 def regist_states(request):

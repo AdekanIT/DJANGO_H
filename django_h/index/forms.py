@@ -1,6 +1,13 @@
+from django.contrib.auth.forms import UserCreationForm
 from django.forms import Form, ModelForm, TextInput, Textarea, ImageField, FileInput
-from .models import Comments, Title
+from .models import Comments, Title, UserProfile
 from django import forms
+
+
+class SignUpForm(UserCreationForm):
+    username = forms.CharField(label='Username')
+    password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
+    password2 = forms.CharField(label='Confirm Password', widget=forms.PasswordInput)
 
 
 class SearchForm(Form):
@@ -10,7 +17,7 @@ class SearchForm(Form):
 class TitleForm(ModelForm):
     class Meta:
         model = Title
-        fields = {'title', 'text', 'img', 'category_name'}
+        fields = ['title', 'text', 'img', 'category_name']
         widgets = {'title': TextInput(attrs={
                        'class': 'form-control',
                        'placeholder': 'Title'}),
@@ -24,7 +31,7 @@ class TitleForm(ModelForm):
 class CommentsForm(ModelForm):
     class Meta:
         model = Comments
-        fields = {'user_name', 'user_title', 'user_comment'}
+        fields = ['user_name', 'user_title', 'user_comment']
         widgets = {
             'user_name': TextInput(attrs={
                     'class': 'form-control',
