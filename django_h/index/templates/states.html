@@ -2,28 +2,57 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>States</title>
+    <title>{{ states.title }} - States</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        hr {
+            border: 1px solid #ccc;
+            margin: 20px 0;
+        }
+
+        a {
+            text-decoration: none;
+            margin-right: 20px;
+            color: #007BFF;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        blockquote {
+            margin-left: 20px;
+        }
+    </style>
 </head>
 <body>
-<h1>{{ states.title }}</h1>
-<hr>
-Category: <a href="/category/{{ states.category_name.id }}">{{ states.category_name }}</a><br>
-{{ states.text }}<br><br>
-<img src="product.pr_photo" alt="In there should be photo, i think i fucked up"><br>
-<hr>
-<a href="/">Home page</a>
-<a href="/add-comment">Add comment</a>
-<hr>
-Comments: <br>
-<hr>
-{% for i in comment %}
-{{ i.user_name }}<br>
-<blockquote style="margin-left: 20px;">{{ i.user_comment }}</blockquote>
-<hr>
-{% endfor %}
-
-
-
-
+    <h1>{{ states.title }}</h1>
+    <hr>
+    <p><strong>Category:</strong> <a href="/category/{{ states.category_name.id }}">{{ states.category_name }}</a></p>
+    <p><strong>Text:</strong> {{ states.text }}</p>
+    <img src="{{ states.pr_photo }}" alt="Photo">
+    <hr>
+    <a href="/">Home page</a>
+    <a href="/add-comment">Add comment</a>
+    <hr>
+    <p><strong>Comments:</strong></p>
+    <hr>
+    {% for i in comment %}
+        <p><strong>{{ i.user_name }}</strong></p>
+        <blockquote>{{ i.user_comment }}</blockquote>
+        <hr>
+    {% endfor %}
 </body>
 </html>

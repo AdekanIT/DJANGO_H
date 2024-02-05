@@ -1,6 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm
-from django.forms import Form, ModelForm, TextInput, Textarea, ImageField, FileInput
-from .models import Comments, Title, UserProfile
+from django.forms import Form, ModelForm, TextInput, Textarea, FileInput
+from .models import Comments, Title
 from django import forms
 
 
@@ -36,7 +36,7 @@ class CommentsForm(ModelForm):
             'user_name': TextInput(attrs={
                     'class': 'form-control',
                     'placeholder': 'User name'}),
-            'user__comment': Textarea(attrs={
+            'user_comment': Textarea(attrs={
                      'class': 'form-control',
                      'placeholder': 'User name'}),
 

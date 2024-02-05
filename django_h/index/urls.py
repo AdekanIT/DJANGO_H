@@ -11,4 +11,5 @@ urlpatterns = [
     path('search', views.search_state),
     path('add-comment', views.add_comment),
     path('sign-up', views.register),
+    path('logout', views.logout_review)
 ]

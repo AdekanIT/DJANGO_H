@@ -2,18 +2,76 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Add comment</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Comment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        span {
+            color: red;
+            display: block;
+            margin-top: 10px;
+        }
+
+        a {
+            display: block;
+            margin-top: 10px;
+            text-decoration: none;
+            color: #333;
+        }
+    </style>
 </head>
 <body>
-Add comment
-<form method="post">
-    {% csrf_token %}
-    {{ form.user_name }}<br>
-    {{ form.user_title }}<br>
-    {{ form.user_comment }}<br>
-    <button type="submit">Comment</button>
-    <span>{{ error }}</span>
-</form>
-<a href="/">Home page</a>
+    <h2>Add Comment</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label for="user_name">Your Name:</label>
+        {{ form.user_name }}<br>
+
+        <label for="user_title">Comment Title:</label>
+        {{ form.user_title }}<br>
+
+        <label for="user_comment">Your Comment:</label>
+        {{ form.user_comment }}<br>
+
+        <button type="submit">Comment</button>
+        <span>{{ error }}</span>
+    </form>
+    <a href="/">Home Page</a>
 </body>
 </html>

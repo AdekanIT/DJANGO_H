@@ -3,12 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <title>Category</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .state-link {
+            display: block;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #e6e6e6;
+            text-decoration: none;
+            color: #333;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .state-link:hover {
+            background-color: #d4d4d4;
+        }
+
+        .separator {
+            margin: 20px 0;
+            border-top: 1px solid #ccc;
+        }
+
+        .home-link {
+            display: block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .home-link:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-{% for i in states %}
-<a href="/states/{{ i.id }}">{{ i.title }}</a>
-{% endfor %}
-<hr>
-<a href="/">Home page</a>
+    <div class="container">
+        <h2>States:</h2>
+        {% for i in states %}
+            <a href="/states/{{ i.id }}" class="state-link">{{ i.title }}</a>
+        {% endfor %}
+        <div class="separator"></div>
+        <a href="/" class="home-link">Home page</a>
+    </div>
 </body>
 </html>

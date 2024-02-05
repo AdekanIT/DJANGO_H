@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import SearchForm, CommentsForm, TitleForm, SignUpForm
 from .models import Category, Title, Comments
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 
 
 # Create your views here.
@@ -72,11 +72,11 @@ def search_state(request):
 
             return redirect(f'states/{except_states.id}')
         except:
-            return redirect('/states-not-found')
+            return redirect('/state-not-found')
 
 
 def state_not_found(request):
-    return render(request, 'not_found.html')
+    return render(request, 'states_not_found.html')
 
 
 def add_comment(request):
@@ -93,18 +93,10 @@ def add_comment(request):
                'error': error}
     return render(request, 'add_comment.html', context)
 
-# def get_user_comment(request):
-#     comment = Comments.objetcs.all()
-#     context = {'comment': comment}
-#     return render(request, 'comments.html', context)
 
-
-# def dell_comment(request, pk):
-#     dell_comments = Comments.objects.get(id=pk)
-#     Comments.objects.filter(user_id=request.user.id,
-#                             user_comment=dell_comments).delete()
-#     return redirect('/')
-
+def logout_review(request):
+    logout(request)
+    return redirect('/')
 
 
 

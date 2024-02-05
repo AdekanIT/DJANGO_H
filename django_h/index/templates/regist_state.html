@@ -2,19 +2,74 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f8f8f8;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        span {
+            color: #ff0000;
+            display: block;
+            margin-top: 10px;
+        }
+
+        a {
+            display: block;
+            margin-top: 10px;
+            text-decoration: none;
+            color: #333;
+        }
+    </style>
 </head>
 <body>
-Add Title
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.title }}<br>
-    {{ form.text }}<br>
-    {{ form.img }}<br>
-    {{ form.category_name }}<br>
-    <button type="submit">Add Title</button>
-    <span>{{ error }}</span>
-</form>
-<a href="/">Home page</a>
+    <h2>Add Title</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.title }}<br>
+        {{ form.text }}<br>
+        {{ form.img }}<br>
+        {{ form.category_name }}<br>
+        <button type="submit">Add Title</button>
+        <span>{{ error }}</span>
+    </form>
+    <a href="/">Home page</a>
 </body>
 </html>
