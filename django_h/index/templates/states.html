@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,11 +39,14 @@
     </style>
 </head>
 <body>
+<form method="post">
+    {% csrf_token %}
     <h1>{{ states.title }}</h1>
     <hr>
     <p><strong>Category:</strong> <a href="/category/{{ states.category_name.id }}">{{ states.category_name }}</a></p>
     <p><strong>Text:</strong> {{ states.text }}</p>
-    <img src="{{ states.pr_photo }}" alt="Photo">
+    <img src="{{ states.img.url }}" alt="Photo">
+    </form>
     <hr>
     <a href="/">Home page</a>
     <a href="/add-comment">Add comment</a>

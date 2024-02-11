@@ -75,19 +75,19 @@ WSGI_APPLICATION = 'django_h.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    # }
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'news',
-        'USER': 'postgres',
-        'PORT': 5432,
-        'PASSWORD': '19772200$d',
-        'HOST': 'localhost'
-
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': 'news',
+    #     'USER': 'postgres',
+    #     'PORT': 5432,
+    #     'PASSWORD': '19772200$d',
+    #     'HOST': 'localhost'
+    #
+    # }
 }
 
 
@@ -124,9 +124,16 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
+import os
+
 
 STATIC_URL = 'static/'
-
+STATIC_ROOT = os.path.join('BASE_DIR', 'assets')
+STATICFILE_DIR = [
+    os.path.join('static')
+]
+MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = '/media/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
